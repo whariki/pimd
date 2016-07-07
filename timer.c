@@ -638,12 +638,13 @@ void age_routes(void)
 
 		    if ((change_flag == TRUE) || (update_src_iif == TRUE))
 			/* Flush the changes */
+            /* Issue 79: set the flag MFC_UPDATE_FORCE to force the change to the iif */
 			change_interfaces(mrt_srcs,
 					  mrt_srcs->incoming,
 					  mrt_srcs->joined_oifs,
 					  mrt_srcs->pruned_oifs,
 					  mrt_srcs->leaves,
-					  mrt_srcs->asserted_oifs, 0);
+					  mrt_srcs->asserted_oifs, MFC_UPDATE_FORCE);
 
 		    check_spt_threshold(mrt_srcs);
 
